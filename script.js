@@ -21,16 +21,7 @@ const appsData = [
         featured: true,
         ageGroup: "3-12 Years"
     },
-    {
-        id: 3,
-        name: "Simple Ledger",
-        category: "individual",
-        description: "Simple AI-powered tools to help small businesses grow. From inventory tracking to customer management - made beautifully simple.",
-        icon: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=100&h=100&fit=crop&crop=center",
-        featured: false,
-        comingSoon: true,
-        ageGroup: "Adults"
-    },
+
 ];// DOM Elements
 const appsGrid = document.getElementById('projectsGrid');
 const heroAppsGrid = document.getElementById('heroAppsGrid');
