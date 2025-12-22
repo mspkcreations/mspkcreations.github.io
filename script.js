@@ -301,7 +301,7 @@ function initializeInteractions() {
             const ideaText = userIdea || '[Please describe your idea here]';
             
             const subject = "Let's Build Something Together";
-            const body = `Hi MohanRaaj,
+            const body = `Hi MSPK Creations,
 
 I saw your website and I'm interested in building a simple, useful tool/app. \nHere's my idea:
 
@@ -312,7 +312,7 @@ Looking forward to hearing from you!
 Best regards,
 [Your name]`;
 
-            const mailtoLink = `mailto:mohan.raaj.s@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            const mailtoLink = `mailto:mspkcreations@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
             
             // Open email client
             window.location.href = mailtoLink;
