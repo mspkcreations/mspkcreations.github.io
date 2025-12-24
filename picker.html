@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Drive Picker</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript">
+    // CONFIGURATION
+    var DEVELOPER_KEY = 'YOUR_API_KEY_HERE';
+    var APP_ID = 'YOUR_PROJECT_NUMBER'; // Found in Project Settings
+
+    var pickerApiLoaded = false;
+
+    function onApiLoad() {
+      gapi.load('picker', { 'callback': onPickerApiLoad });
+    }
+
+    function onPickerApiLoad() {
+      pickerApiLoaded = true;
+      createPicker();
+    }
+
+    function createPicker() {
+      // 1. Get Token from URL Fragment (safer than query params)
+      // Example: https://site.com/picker.html#token=abc...
+      var hashParams = new URLSearchParams(window.location.hash.substring(1));
+      var oauthToken = hashParams.get('token');
+
+      if (pickerApiLoaded && oauthToken) {
+        var view = new google.picker.DocsView(google.picker.ViewId.DOCS)
+            .setIncludeFolders(true) 
+            .setSelectFolderEnabled(true) // Allow selecting folders
+            .setMimeTypes('application/vnd.google-apps.folder');
+
+        var picker = new google.picker.PickerBuilder()
+            .addView(view)
+            .setOAuthToken(oauthToken)
+            .setDeveloperKey(DEVELOPER_KEY)
+            .setAppId(APP_ID)
+            .setCallback(pickerCallback)
+            .build();
+        picker.setVisible(true);
+      }
+    }
+
+    function pickerCallback(data) {
+      if (data[google.picker.Response.ACTION] == google.picker.Action.PICKED) {
+        var doc = data[google.picker.Response.DOCUMENTS][0];
+        var fileId = doc[google.picker.Document.ID];
+
+        // 2. REDIRECT back to Flutter
+        // This triggers the deep link on the phone
+        window.location.href = "medicineapp://picker_result?fileId=" + fileId;
+      }
+    }
+  </script>
+</head>
+<body>
+    <script type="text/javascript" src="https://apis.google.com/js/api.js?onload=onApiLoad"></script>
+    <p style="text-align:center; margin-top:50px; font-family:sans-serif;">Opening Google Drive...</p>
+</body>
+</html>
