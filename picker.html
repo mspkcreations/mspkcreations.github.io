@@ -1,20 +1,116 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Drive Picker</title>
+  <title>Google Drive Picker</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      background: white;
+      border-radius: 16px;
+      padding: 32px;
+      max-width: 500px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+    .icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+    h1 {
+      color: #333;
+      font-size: 24px;
+      margin: 0 0 12px 0;
+    }
+    .subtitle {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+    .info-box {
+      background: #f0f4ff;
+      border: 2px solid #667eea;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    .info-title {
+      font-weight: 600;
+      color: #667eea;
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+    .file-pattern {
+      font-family: 'Courier New', monospace;
+      background: white;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      color: #333;
+      word-break: break-all;
+    }
+    .steps {
+      text-align: left;
+      margin-top: 16px;
+    }
+    .step {
+      display: flex;
+      align-items: start;
+      margin-bottom: 12px;
+      font-size: 13px;
+      color: #555;
+    }
+    .step-number {
+      background: #667eea;
+      color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 12px;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid #f3f3f3;
+      border-top: 3px solid #667eea;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
   <script type="text/javascript">
-    // CONFIGURATION
-    var DEVELOPER_KEY = 'AIzaSyBSFcGPGdzTofNd915wCXn_lZfv87UKc3I';
-    var APP_ID = '230626304410'; 
-
     var pickerApiLoaded = false;
+    var config = {};
 
     function onApiLoad() {
-      gapi.load('picker', { 
+      gapi.load('picker', {
         'callback': onPickerApiLoad,
-        'onerror': function() { alert('gapi.load failed. Check network/blockers.'); }
+        'onerror': function() {
+          alert('Failed to load Google Picker. Please check your internet connection.');
+        }
       });
     }
 
@@ -24,29 +120,71 @@
     }
 
     function createPicker() {
+      // Parse all parameters from URL hash
       var hashParams = new URLSearchParams(window.location.hash.substring(1));
-      var oauthToken = hashParams.get('token');
 
-      if (pickerApiLoaded && oauthToken) {
+      config = {
+        token: hashParams.get('token'),
+        apiKey: hashParams.get('apiKey'),
+        appId: hashParams.get('appId'),
+        prefix: hashParams.get('prefix') || '',
+        suffix: hashParams.get('suffix') || '',
+        title: hashParams.get('title') || 'Select File',
+        subtitle: hashParams.get('subtitle') || 'Choose a file from your Google Drive',
+        icon: hashParams.get('icon') || '📁'
+      };
+
+      // Update UI with dynamic content
+      document.getElementById('pageIcon').textContent = config.icon;
+      document.getElementById('pageTitle').textContent = config.title;
+      document.getElementById('pageSubtitle').textContent = config.subtitle;
+
+      var filePatternElement = document.getElementById('filePattern');
+      if (filePatternElement && config.prefix && config.suffix) {
+        filePatternElement.textContent = config.prefix + '{id}' + config.suffix;
+      } else if (filePatternElement) {
+        // Hide pattern box if no prefix/suffix provided
+        document.getElementById('patternBox').style.display = 'none';
+      }
+
+      // Validate required parameters
+      if (!config.token) {
+        alert("Error: Missing authentication token. Please try again from the app.");
+        return;
+      }
+      if (!config.apiKey) {
+        alert("Error: Missing API key. Please contact support.");
+        return;
+      }
+      if (!config.appId) {
+        alert("Error: Missing App ID. Please contact support.");
+        return;
+      }
+
+      if (pickerApiLoaded) {
+        // Use suffix for query to filter files
         var view = new google.picker.DocsView(google.picker.ViewId.DOCS)
-            .setIncludeFolders(true)   // User can navigate folders
-            .setSelectFolderEnabled(false) // <--- CHANGE 1: Cannot pick the folder itself
-            .setMimeTypes('application/json') // <--- CHANGE 2: Grays out everything except JSON
-            .setQuery("_changelog.json"); // <--- CHANGE 3: Auto-filters by name
+            .setIncludeFolders(true)
+            .setSelectFolderEnabled(false)
+            .setMimeTypes('application/json');
+
+        // Add query filter if suffix is provided
+        if (config.suffix) {
+          view.setQuery(config.suffix);
+        }
 
         var origin = window.location.protocol + '//' + window.location.host;
 
         var picker = new google.picker.PickerBuilder()
             .addView(view)
-            .setOAuthToken(oauthToken)
-            .setDeveloperKey(DEVELOPER_KEY)
-            .setAppId(APP_ID)
+            .setOAuthToken(config.token)
+            .setDeveloperKey(config.apiKey)
+            .setAppId(config.appId)
             .setCallback(pickerCallback)
             .setOrigin(origin)
+            .setTitle(config.title)
             .build();
         picker.setVisible(true);
-      } else {
-         if (!oauthToken) alert("Error: Missing 'token' in URL hash");
       }
     }
 
@@ -54,17 +192,53 @@
       if (data[google.picker.Response.ACTION] == google.picker.Action.PICKED) {
         var doc = data[google.picker.Response.DOCUMENTS][0];
         var fileId = doc[google.picker.Document.ID];
-        // Redirect back to Flutter app
+        // Redirect back to app using custom URL scheme
         window.location.href = "medicineapp://picker_result?fileId=" + fileId;
+      } else if (data[google.picker.Response.ACTION] == google.picker.Action.CANCEL) {
+        window.location.href = "medicineapp://picker_result?fileId=";
       } else if (data[google.picker.Response.ACTION] == google.picker.Action.ERROR) {
         console.error("Picker Error: ", data);
-        alert("Google Error: " + JSON.stringify(data));
+        alert("Google Picker Error: " + JSON.stringify(data));
       }
     }
   </script>
 </head>
 <body>
-    <script type="text/javascript" src="https://apis.google.com/js/api.js?onload=onApiLoad"></script>
-    <p style="text-align:center; margin-top:50px; font-family:sans-serif;">Opening Google Drive...</p>
+  <div class="container">
+    <div class="icon" id="pageIcon">📁</div>
+    <h1 id="pageTitle">Select File</h1>
+    <p class="subtitle" id="pageSubtitle">Choose a file from your Google Drive</p>
+
+    <div class="info-box" id="patternBox">
+      <div class="info-title">🔍 Look for files matching this pattern:</div>
+      <div class="file-pattern" id="filePattern"></div>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <div>The Google Drive picker will open automatically</div>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <div>Navigate to the folder where the file is located</div>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <div>Only JSON files matching the pattern will be selectable</div>
+      </div>
+      <div class="step">
+        <div class="step-number">4</div>
+        <div>Select the file and click "Select" to continue</div>
+      </div>
+    </div>
+
+    <p style="color: #999; font-size: 12px; margin-top: 24px;">
+      <span class="loading"></span>
+      Opening Google Drive Picker...
+    </p>
+  </div>
+
+  <script type="text/javascript" src="https://apis.google.com/js/api.js?onload=onApiLoad"></script>
 </body>
 </html>
