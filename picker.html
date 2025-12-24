@@ -51,11 +51,18 @@
       right: 0;
       background: white;
       color: #666;
-      padding: 8px 20px;
+      padding: 10px 20px;
       z-index: 10000;
       border-top: 1px solid #e0e0e0;
       font-size: 11px;
       text-align: center;
+      line-height: 1.5;
+    }
+    footer .hint {
+      margin-top: 4px;
+      font-size: 10px;
+      color: #999;
+      font-style: italic;
     }
   </style>
   <script type="text/javascript">
@@ -121,7 +128,8 @@
         var view = new google.picker.DocsView(google.picker.ViewId.DOCS)
             .setIncludeFolders(true)
             .setSelectFolderEnabled(false)
-            .setMimeTypes('application/json');
+            .setMimeTypes('application/json')
+            .setMode(google.picker.DocsViewMode.LIST); // Set to list view
 
         // Add query filter if suffix is provided
         if (config.suffix) {
@@ -170,7 +178,8 @@
   </header>
 
   <footer>
-    <span id="pageSubtitle">Choose a file from your Google Drive</span>
+    <div id="pageSubtitle">Choose a file from your Google Drive</div>
+    <div class="hint">💡 Multiple files may match. Remember the first few letters of the ID to pick the right one next time</div>
   </footer>
 
   <script type="text/javascript" src="https://apis.google.com/js/api.js?onload=onApiLoad"></script>
