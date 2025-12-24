@@ -32,7 +32,7 @@
             .setIncludeFolders(true)   // User can navigate folders
             .setSelectFolderEnabled(false) // <--- CHANGE 1: Cannot pick the folder itself
             .setMimeTypes('application/json') // <--- CHANGE 2: Grays out everything except JSON
-            .setQuery("name contains '_changelog.json'"); // <--- CHANGE 3: Auto-filters by name
+            .setQuery("_changelog.json"); // <--- CHANGE 3: Auto-filters by name
 
         var origin = window.location.protocol + '//' + window.location.host;
 
