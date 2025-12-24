@@ -7,12 +7,15 @@
   <script type="text/javascript">
     // CONFIGURATION
     var DEVELOPER_KEY = 'AIzaSyBSFcGPGdzTofNd915wCXn_lZfv87UKc3I';
-    var APP_ID = '230626304410'; // Found in Project Settings
+    var APP_ID = '230626304410'; 
 
     var pickerApiLoaded = false;
 
     function onApiLoad() {
-      gapi.load('picker', { 'callback': onPickerApiLoad });
+      gapi.load('picker', { 
+        'callback': onPickerApiLoad,
+        'onerror': function() { alert('gapi.load failed. Check network/blockers.'); }
+      });
     }
 
     function onPickerApiLoad() {
@@ -21,16 +24,16 @@
     }
 
     function createPicker() {
-      // 1. Get Token from URL Fragment (safer than query params)
-      // Example: https://site.com/picker.html#token=abc...
       var hashParams = new URLSearchParams(window.location.hash.substring(1));
       var oauthToken = hashParams.get('token');
 
       if (pickerApiLoaded && oauthToken) {
         var view = new google.picker.DocsView(google.picker.ViewId.DOCS)
             .setIncludeFolders(true) 
-            .setSelectFolderEnabled(true) // Allow selecting folders
+            .setSelectFolderEnabled(true)
             .setMimeTypes('application/vnd.google-apps.folder');
+
+        var origin = window.location.protocol + '//' + window.location.host;
 
         var picker = new google.picker.PickerBuilder()
             .addView(view)
@@ -38,8 +41,12 @@
             .setDeveloperKey(DEVELOPER_KEY)
             .setAppId(APP_ID)
             .setCallback(pickerCallback)
+            .setOrigin(origin) // <--- CRITICAL FIX: REQUIRED FOR SECURITY
             .build();
         picker.setVisible(true);
+      } else {
+         // Helpful debugging if it fails again
+         if (!oauthToken) alert("Error: Missing 'token' in URL hash");
       }
     }
 
@@ -47,10 +54,10 @@
       if (data[google.picker.Response.ACTION] == google.picker.Action.PICKED) {
         var doc = data[google.picker.Response.DOCUMENTS][0];
         var fileId = doc[google.picker.Document.ID];
-
-        // 2. REDIRECT back to Flutter
-        // This triggers the deep link on the phone
         window.location.href = "medicineapp://picker_result?fileId=" + fileId;
+      } else if (data[google.picker.Response.ACTION] == google.picker.Action.ERROR) {
+        console.error("Picker Error: ", data);
+        alert("Google Error: " + JSON.stringify(data));
       }
     }
   </script>
