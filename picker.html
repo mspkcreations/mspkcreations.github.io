@@ -29,9 +29,10 @@
 
       if (pickerApiLoaded && oauthToken) {
         var view = new google.picker.DocsView(google.picker.ViewId.DOCS)
-            .setIncludeFolders(true) 
-            .setSelectFolderEnabled(true)
-            .setMimeTypes('application/vnd.google-apps.folder');
+            .setIncludeFolders(true)   // User can navigate folders
+            .setSelectFolderEnabled(false) // <--- CHANGE 1: Cannot pick the folder itself
+            .setMimeTypes('application/json') // <--- CHANGE 2: Grays out everything except JSON
+            .setQuery("name contains '_changelog.json'"); // <--- CHANGE 3: Auto-filters by name
 
         var origin = window.location.protocol + '//' + window.location.host;
 
@@ -41,11 +42,10 @@
             .setDeveloperKey(DEVELOPER_KEY)
             .setAppId(APP_ID)
             .setCallback(pickerCallback)
-            .setOrigin(origin) // <--- CRITICAL FIX: REQUIRED FOR SECURITY
+            .setOrigin(origin)
             .build();
         picker.setVisible(true);
       } else {
-         // Helpful debugging if it fails again
          if (!oauthToken) alert("Error: Missing 'token' in URL hash");
       }
     }
@@ -54,6 +54,7 @@
       if (data[google.picker.Response.ACTION] == google.picker.Action.PICKED) {
         var doc = data[google.picker.Response.DOCUMENTS][0];
         var fileId = doc[google.picker.Document.ID];
+        // Redirect back to Flutter app
         window.location.href = "medicineapp://picker_result?fileId=" + fileId;
       } else if (data[google.picker.Response.ACTION] == google.picker.Action.ERROR) {
         console.error("Picker Error: ", data);
