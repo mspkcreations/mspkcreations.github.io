@@ -97,7 +97,7 @@
         subtitle: hashParams.get('subtitle') || 'Choose a file from your Google Drive',
         icon: hashParams.get('icon') || '📁',
         // Callback URL scheme - MUST be provided by calling app (e.g., 'medicineapp://picker_result')
-        callback: hashParams.get('callback')
+        callback: hashParams.get('callback') || 'medicineapp://picker_result'
       };
 
       // Update UI with dynamic content
