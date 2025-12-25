@@ -138,8 +138,8 @@
             .setMode(google.picker.DocsViewMode.LIST); // Set to list view
 
         // Add query filter if suffix is provided
-        if (config.suffix) {
-          view.setQuery(config.suffix);
+        if (config.prefix) {
+          view.setQuery(config.prefix);
         }
 
         var origin = window.location.protocol + '//' + window.location.host;
