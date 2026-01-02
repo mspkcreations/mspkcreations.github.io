@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Invite</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            text-align: center;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .file-box {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #e1e4e8;
+            margin-bottom: 30px;
+            font-family: monospace;
+            font-size: 14px;
+            color: #444;
+            word-break: break-all;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 14px 0;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+        }
+
+        .footer-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #007bff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <div class="icon">📂</div>
+        <h1 id="title">Shared File</h1>
+        <p id="message">You have been invited to access a shared file.</p>
+
+        <div id="fileInfo" class="file-box" style="display: none;">
+            <span id="fileName">...</span>
+        </div>
+
+        <button id="openBtn" class="btn" onclick="openApp()">Open in App</button>
+
+        <br>
+        <a id="storeLink" href="#" class="footer-link">Don't have the app? Download here</a>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        // Parameters:
+        // file: The filename or ID to pass to the app
+        // scheme: The custom URL scheme (default: familytreeapp)
+        // package: The Android package ID (default: com.mspk.app.ft.familytree)
+        // appName: The display name of the app (default: App)
+
+        const fileName = params.get('file');
+        const scheme = params.get('scheme') || 'familytreeapp';
+        const pkg = params.get('package') || 'com.mspk.app.ft.familytree';
+        const appName = params.get('appName');
+
+        if (appName) {
+            document.title = `Join ${appName}`;
+            // document.getElementById('title').innerText = appName;
+        }
+
+        if (fileName) {
+            document.getElementById('fileInfo').style.display = 'block';
+            document.getElementById('fileName').innerText = fileName;
+        }
+
+        document.getElementById('storeLink').href = `https://play.google.com/store/apps/details?id=${pkg}`;
+
+        function openApp() {
+            if (fileName) {
+                // Construct deep link: scheme://invite?file=...
+                const deepLink = `${scheme}://invite?file=${encodeURIComponent(fileName)}`;
+                window.location.href = deepLink;
+            } else {
+                alert('No file specified.');
+            }
+        }
+    </script>
+</body>
+
+</html>
