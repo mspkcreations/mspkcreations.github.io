@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stock Tally – Privacy Policy</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f8f9fa;
+      color: #212121;
+      line-height: 1.7;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1565C0, #1E88E5);
+      color: #fff;
+      padding: 48px 24px 40px;
+      text-align: center;
+    }
+    header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
+    header p  { font-size: 1rem; opacity: 0.85; }
+
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    h2 {
+      color: #1565C0;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin: 36px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid #E3F2FD;
+    }
+
+    p  { margin-bottom: 12px; }
+    ul { margin: 8px 0 12px 20px; }
+    li { margin-bottom: 6px; }
+
+    .highlight {
+      background: #E3F2FD;
+      border-left: 4px solid #1565C0;
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      margin: 16px 0;
+    }
+    .highlight strong { color: #0D47A1; }
+
+    .badge {
+      display: inline-block;
+      background: #1565C0;
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 2px 10px;
+      border-radius: 12px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 16px;
+      font-size: 0.9rem;
+    }
+    th {
+      background: #1565C0;
+      color: #fff;
+      text-align: left;
+      padding: 10px 14px;
+    }
+    td { padding: 9px 14px; border-bottom: 1px solid #E8EAF6; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #EBF4FF; }
+
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      background: #0D3A7A;
+      color: rgba(255,255,255,0.75);
+      font-size: 0.85rem;
+    }
+    footer a { color: #90CAF9; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Stock Tally – Privacy Policy</h1>
+  <p>Last updated: February 18, 2026</p>
+</header>
+
+<div class="container">
+
+  <div class="highlight">
+    <strong>Short version:</strong> Your inventory data lives on your device.
+    We don't run servers, don't collect analytics, and don't sell data.
+    The only time anything leaves your device is when <em>you</em> choose to
+    enable Google Drive sync or send us feedback. The camera is used only
+    for barcode scanning — no images are stored or transmitted.
+  </div>
+
+  <!-- 1 -->
+  <h2>1. Information We Collect</h2>
+
+  <p>The app collects the following information depending on which features you use:</p>
+
+  <table>
+    <tr>
+      <th>Data</th>
+      <th>When collected</th>
+      <th>Where it goes</th>
+    </tr>
+    <tr>
+      <td>Inventory items, quantities, categories, and related records</td>
+      <td>When you create or edit records</td>
+      <td>Your device only (SQLite database)</td>
+    </tr>
+    <tr>
+      <td>App profiles</td>
+      <td>When you create a profile</td>
+      <td>Your device only</td>
+    </tr>
+    <tr>
+      <td>Barcodes scanned via camera</td>
+      <td>On demand when you use the barcode scanner</td>
+      <td>Decoded value used to populate a product field; no image is stored or transmitted</td>
+    </tr>
+    <tr>
+      <td>Google account email &amp; display name</td>
+      <td>Only when you sign in to enable Google Drive sync</td>
+      <td>Stored locally; used to authenticate with Google Drive</td>
+    </tr>
+    <tr>
+      <td>Device name &amp; hardware ID</td>
+      <td>Only when sync is enabled</td>
+      <td>Stored inside your own Google Drive sync file to track which devices have synced</td>
+    </tr>
+    <tr>
+      <td>Device brand, model, Android/iOS version</td>
+      <td>Only when you voluntarily send feedback or a bug report</td>
+      <td>Included in the email you send to us; never collected silently</td>
+    </tr>
+    <tr>
+      <td>In-app purchase status (premium)</td>
+      <td>When you make or restore a purchase</td>
+      <td>Verified via Google Play Billing; status cached locally</td>
+    </tr>
+  </table>
+
+  <p><strong>We do not collect:</strong> location, contacts, stored photos, browsing history, or any usage analytics.</p>
+
+  <!-- 2 -->
+  <h2>2. Camera &amp; Barcode Scanner</h2>
+  <p>The camera is used exclusively for real-time barcode scanning.
+  The app reads the barcode value, populates the product field, and
+  immediately discards the camera frame — no image is saved to the gallery,
+  stored in the database, or sent anywhere.</p>
+
+  <!-- 3 -->
+  <h2>3. How We Use Your Information</h2>
+  <ul>
+    <li><strong>Inventory data</strong> – Solely to operate the app's core features on your device.</li>
+    <li><strong>Barcode values</strong> – To pre-fill product fields; not stored separately from the product record you create.</li>
+    <li><strong>Google account &amp; device identifiers</strong> – Solely to sync your data between your own devices via Google Drive. This data is never shared with us or any third party.</li>
+    <li><strong>Feedback email</strong> – To diagnose issues and improve the app. Sending feedback is entirely opt-in; you compose and send the email yourself from your own mail app.</li>
+    <li><strong>Purchase status</strong> – To unlock premium features you have paid for.</li>
+  </ul>
+
+  <!-- 4 -->
+  <h2>4. Data Storage</h2>
+  <p>All your inventory data is stored locally in an SQLite database on your device
+  (<code>stocktally.db</code>). No data is stored on our servers — we don't operate any servers.</p>
+  <p>If you enable Google Drive sync, a copy of your data is stored in a private
+  app-specific folder in <em>your own</em> Google Drive account, which only your
+  accounts can access.</p>
+
+  <!-- 5 -->
+  <h2>5. Google Drive Sync <span class="badge">Optional</span></h2>
+  <p>Sync is disabled by default. When you enable it:</p>
+  <ul>
+    <li>You sign in with Google and grant the app access only to files it creates (drive.appdata or drive.file scope).</li>
+    <li>Your data is encrypted in transit by Google's HTTPS infrastructure.</li>
+    <li>The sync file resides in your Google Drive; we cannot access it.</li>
+    <li>You can revoke access at any time via your <a href="https://myaccount.google.com/permissions" target="_blank">Google Account permissions</a>.</li>
+  </ul>
+
+  <!-- 6 -->
+  <h2>6. In-App Purchases</h2>
+  <p>Premium purchases are processed by Google Play Billing. We receive only a
+  boolean purchase status — no payment card or billing details are ever shared
+  with us. Google's handling of payment data is governed by the
+  <a href="https://play.google.com/about/play-terms/" target="_blank">Google Play Terms of Service</a>.</p>
+
+  <!-- 7 -->
+  <h2>7. Third-Party Services</h2>
+  <table>
+    <tr>
+      <th>Service</th>
+      <th>Purpose</th>
+      <th>Data shared</th>
+    </tr>
+    <tr>
+      <td>Google Sign-In</td>
+      <td>Authentication for sync</td>
+      <td>Google account info (only when you choose to sign in)</td>
+    </tr>
+    <tr>
+      <td>Google Drive API</td>
+      <td>Storing your sync file in your Drive</td>
+      <td>Your inventory data (stored in your own Drive)</td>
+    </tr>
+    <tr>
+      <td>Google Play Billing</td>
+      <td>In-app purchases</td>
+      <td>Purchase token (no payment details)</td>
+    </tr>
+  </table>
+  <p>Stock Tally does not use advertising networks, analytics SDKs, or social media integrations.</p>
+
+  <!-- 8 -->
+  <h2>8. Data Sharing</h2>
+  <p>We do not sell, trade, rent, or share your personal information with any third party for marketing or commercial purposes. The only outbound data flows are those you explicitly initiate (sync or feedback email) as described above.</p>
+
+  <!-- 9 -->
+  <h2>9. Your Rights &amp; Controls</h2>
+  <ul>
+    <li><strong>Delete all data</strong> – Uninstalling the app removes the local database. If sync was enabled, delete the app folder from your Google Drive.</li>
+    <li><strong>Revoke Google access</strong> – Visit <a href="https://myaccount.google.com/permissions" target="_blank">myaccount.google.com/permissions</a> and remove Stock Tally.</li>
+    <li><strong>Camera permission</strong> – You can revoke camera permission at any time via device settings; this disables barcode scanning but does not affect any other feature.</li>
+    <li><strong>Data export</strong> – Use the app's built-in share/export features to export your data at any time.</li>
+  </ul>
+
+  <!-- 10 -->
+  <h2>10. Children's Privacy</h2>
+  <p>Stock Tally is not directed at children under 13. We do not knowingly
+  collect personal information from children. If you believe a child has
+  provided personal information, please contact us and we will delete it.</p>
+
+  <!-- 11 -->
+  <h2>11. Changes to This Policy</h2>
+  <p>If we make material changes, we will update the "Last updated" date at the
+  top of this page. We encourage you to review this policy periodically. Continued
+  use of the app after changes constitutes acceptance of the revised policy.</p>
+
+  <!-- 12 -->
+  <h2>12. Contact Us</h2>
+  <p>If you have questions or concerns about this privacy policy, please email us:</p>
+  <p><strong><a href="mailto:mspkcreations@gmail.com">mspkcreations@gmail.com</a></strong></p>
+
+</div>
+
+<footer>
+  <p>&copy; 2026 Stock Tally · <a href="mailto:mspkcreations@gmail.com">mspkcreations@gmail.com</a></p>
+</footer>
+
+</body>
+</html>
