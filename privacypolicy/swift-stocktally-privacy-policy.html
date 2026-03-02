@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StockTally – Privacy Policy</title>
+  <style>
+    :root {
+      --accent: #2563eb;
+      --text: #1e293b;
+      --muted: #64748b;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --border: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    header {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    main {
+      max-width: 760px;
+      margin: 40px auto;
+      padding: 0 24px 60px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    h2::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 18px;
+      background: var(--accent);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    p {
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    ul {
+      margin: 8px 0 10px 20px;
+      color: var(--text);
+    }
+
+    ul li {
+      margin-bottom: 6px;
+    }
+
+    .highlight {
+      background: #eff6ff;
+      border-left: 4px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 0.95rem;
+      color: #1e40af;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: var(--muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>StockTally</h1>
+    <p>Privacy Policy &nbsp;&middot;&nbsp; Effective Date: March 2, 2026</p>
+  </header>
+
+  <main>
+
+    <div class="card">
+      <h2>Overview</h2>
+      <p>
+        StockTally ("the App") is an inventory and stock management application designed for
+        individuals and small businesses. We are committed to protecting your privacy.
+        This policy explains what data the App uses, how it is stored, and your rights.
+      </p>
+      <div class="highlight">
+        StockTally does not collect, transmit, or share your personal data with any third party.
+        All your data stays on your device and, optionally, your personal iCloud account.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Data You Enter</h2>
+      <p>The App allows you to create and manage:</p>
+      <ul>
+        <li>Products, stock items, and inventory records</li>
+        <li>Stock vouchers and transaction entries</li>
+        <li>Party (customer / supplier) names and contact details</li>
+        <li>Unit conversions and conversion templates</li>
+        <li>Stock take records and sales reports</li>
+      </ul>
+      <p>
+        All data you enter is stored <strong>locally on your device</strong> using Apple's
+        CoreData framework. This data never leaves your device except through iCloud sync
+        (see below) or CSV exports that you initiate yourself.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>iCloud Sync</h2>
+      <p>
+        If you are signed in to iCloud and have iCloud Drive enabled, the App may sync your
+        data across your personal Apple devices using <strong>CloudKit</strong> — Apple's
+        private cloud database service. Your data is stored in your own iCloud account and
+        is governed by Apple's Privacy Policy. We have no access to your iCloud data.
+      </p>
+      <p>
+        You can disable iCloud sync at any time in your device's Settings app under
+        <em>iCloud &rsaquo; [App Name]</em>.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Camera Access</h2>
+      <p>
+        The App requests access to your device camera solely to scan barcodes for product
+        identification. Camera images are processed in real time on-device and are never
+        stored, saved, or transmitted.
+      </p>
+      <p>
+        You can revoke camera permission at any time in <em>Settings &rsaquo; Privacy &amp;
+        Security &rsaquo; Camera</em>.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>CSV Export</h2>
+      <p>
+        The App provides a CSV export feature that lets you export your stock and transaction
+        data as spreadsheet files. Exported files are saved to locations you choose (Files
+        app, AirDrop, email, etc.). We have no access to exported files, and their handling
+        after export is entirely your responsibility.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Analytics &amp; Tracking</h2>
+      <p>
+        StockTally does <strong>not</strong> use any third-party analytics SDKs, advertising
+        frameworks, or tracking technologies. We do not collect crash reports, usage metrics,
+        or any telemetry data from your device.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Data Sharing</h2>
+      <p>
+        We do not sell, rent, or share any of your data with third parties. Your inventory
+        data, party information, and transaction records are yours alone.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Data Retention &amp; Deletion</h2>
+      <p>
+        Your data is retained only for as long as the App is installed on your device.
+        Deleting the App removes all locally stored data. To remove iCloud-synced data,
+        delete the App on all your devices or manage your iCloud storage in Apple's Settings.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Children's Privacy</h2>
+      <p>
+        StockTally is not directed at children under the age of 13. We do not knowingly
+        collect any data from children.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Changes to This Policy</h2>
+      <p>
+        We may update this Privacy Policy from time to time. Any changes will be posted
+        within the App or on our support page with an updated effective date. Continued use
+        of the App after changes constitutes acceptance of the updated policy.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Contact Us</h2>
+      <p>
+        If you have any questions or concerns about this Privacy Policy or the App's data
+        practices, please contact us at:
+      </p>
+      <p>
+        <a href="mailto:support@stocktally.app">support@stocktally.app</a>
+      </p>
+    </div>
+
+  </main>
+
+  <footer>
+    &copy; 2026 StockTally. All rights reserved.
+  </footer>
+
+</body>
+</html>
