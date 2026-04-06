@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — My Money - Track Expenses</title>
+  <style>
+    :root {
+      --text-primary: #1d1d1f;
+      --text-secondary: #6e6e73;
+      --background: #ffffff;
+      --surface: #f5f5f7;
+      --border: #d2d2d7;
+      --accent: #0071e3;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text-primary: #f5f5f7;
+        --text-secondary: #a1a1a6;
+        --background: #000000;
+        --surface: #1c1c1e;
+        --border: #3a3a3c;
+        --accent: #2997ff;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+      background-color: var(--background);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 64px 24px 96px;
+    }
+
+    header {
+      margin-bottom: 56px;
+    }
+
+    .app-name {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .effective-date {
+      font-size: 15px;
+      color: var(--text-secondary);
+    }
+
+    .summary-card {
+      background-color: var(--surface);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 48px;
+    }
+
+    .summary-card p {
+      font-size: 17px;
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-size: 21px;
+      font-weight: 600;
+      letter-spacing: -0.2px;
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 17px;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    ul li {
+      font-size: 17px;
+      color: var(--text-secondary);
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    ul li:last-child {
+      border-bottom: none;
+    }
+
+    ul li::before {
+      content: "·";
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <p class="app-name">My Money - Track Expenses</p>
+      <h1>Privacy Policy</h1>
+      <p class="effective-date">Effective April 6, 2026</p>
+    </header>
+
+    <div class="summary-card">
+      <p>My Money - Track Expenses (“the App”) is developed by Mohan Raaj S (“Developer”, “we”, “us”, or “our”). We are committed to protecting your privacy. This Privacy Policy explains how the App handles your information when you use it.</p>
+    </div>
+
+    <div class="summary-card">
+      <p><strong>Summary:</strong> My Money does not collect, transmit, or share any personal data with us or third parties. Your data is stored on your device and, if you are signed in to iCloud, synced privately via Apple's iCloud (CloudKit) to your other devices.</p>
+    </div>
+
+    <section>
+      <h2>Data We Collect</h2>
+      <p>We collect no personal information. My Money stores all data — wallets, transactions, profiles, and settings — locally on your device using Apple's SwiftData framework. We do not operate any servers and have no access to your data.</p>
+    </section>
+
+    <section>
+      <h2>No Accounts Required</h2>
+      <p>My Money does not require you to create an account or sign in with us. There is no developer-operated server, no user profile, and no authentication of any kind beyond your existing Apple ID for iCloud sync.</p>
+    </section>
+
+    <section>
+      <h2>No Analytics or Tracking</h2>
+      <p>We do not use any analytics SDKs, crash reporters, or advertising frameworks. We have no visibility into how you use the app.</p>
+    </section>
+
+    <section>
+      <h2>iCloud Sync</h2>
+      <p>If you are signed in to iCloud on your device, My Money uses Apple's CloudKit to sync your data across your devices. This means the following data is stored in your private iCloud account:</p>
+      <ul>
+        <li>Wallet names, types, icons, and sort order</li>
+        <li>Transaction records (expenses, income, transfers) including amounts, categories, dates, and notes</li>
+        <li>Transaction entries (ledger lines linking transactions to wallets)</li>
+        <li>Profile names, currency settings, and form defaults</li>
+      </ul>
+      <p>This data is stored in your private iCloud container and is accessible only to you. We have no ability to read, access, or extract your iCloud data. iCloud sync is managed entirely by Apple and is subject to <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple's Privacy Policy</a>. You can disable iCloud sync for this app in your device's Settings under iCloud.</p>
+    </section>
+
+    <section>
+      <h2>In-App Purchases</h2>
+      <p>My Money offers a one-time in-app purchase to unlock unlimited transactions. Payments are processed entirely by Apple through the App Store. We receive no payment details, billing information, or personal data as part of this transaction.</p>
+    </section>
+
+    <section>
+      <h2>Third-Party Services</h2>
+      <p>My Money uses no third-party SDKs, services, or APIs. The only external integrations are Apple's StoreKit for in-app purchases and Apple's CloudKit for iCloud sync, both of which are governed by <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple's Privacy Policy</a>.</p>
+    </section>
+
+    <section>
+      <h2>Data Storage</h2>
+      <p>The following information is stored locally on your device and, if iCloud is enabled, synced to your private iCloud account:</p>
+      <ul>
+        <li>Wallet names, types, and balances</li>
+        <li>Transaction records (expenses, income, transfers)</li>
+        <li>Profile names and currency settings</li>
+        <li>App preferences and form defaults</li>
+      </ul>
+      <p>Premium purchase status is managed by Apple through the App Store and is not stored in iCloud by the app.</p>
+    </section>
+
+    <section>
+      <h2>Children's Privacy</h2>
+      <p>My Money does not knowingly collect data from anyone, including children under 13. Since we collect no data at all, the app is safe for all ages.</p>
+    </section>
+
+    <section>
+      <h2>Changes to This Policy</h2>
+      <p>If this policy changes, the updated version will be posted at this URL with a new effective date. Continued use of My Money after any changes constitutes acceptance of the updated policy.</p>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p>If you have any questions or concerns about this Privacy Policy or the App’s data practices, please contact us at:</p>
+      <p><strong>Mohan Raaj S</strong><br>Email: <a href="mailto:mohan.raaj.s@gmail.com">mohan.raaj.s@gmail.com</a></p>
+    </section>
+
+    <footer>
+      <p>© 2026 Mohan Raaj S. All rights reserved.</p>
+    </footer>
+
+  </div>
+</body>
+</html>
